@@ -10,15 +10,19 @@ namespace AppBundle\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class MembersController
+class MembersController extends Controller
 {
     /**
-     * @Route("/members")
+     * @Route("/members/{memberName}")
      */
-    public function showAction()
+    public function showAction($memberName)
     {
-        return new Response('Memebers show action');
+        return $this->render('members/show.html.twig',
+            [
+                'name'  =>$memberName
+            ]);
     }
 }
